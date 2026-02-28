@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr-CI">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actualités d'Alliance Tounga AgroCoop : lancement officiel, acquisitions, récoltes et événements du Bafing.">
+    <title>Actualités | Alliance Tounga AgroCoop</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="nav" role="navigation">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo--orange">Alliance</span>
+                <span class="nav__logo--green">Tounga</span>
+            </a>
+            <button class="nav__burger" aria-label="Menu">
+                <span class="nav__burger-line"></span>
+                <span class="nav__burger-line"></span>
+                <span class="nav__burger-line"></span>
+            </button>
+            <ul class="nav__menu" id="menu">
+                <li><a href="index.html" class="nav__link">Accueil</a></li>
+                <li><a href="cooperative.html" class="nav__link">La Coopérative</a></li>
+                <li><a href="filieres.html" class="nav__link">Nos Filières</a></li>
+                <li><a href="produits.html" class="nav__link">Nos Produits</a></li>
+                <li><a href="actualites.html" class="nav__link nav__link--active">Actualités</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-header__title">Actualités</h1>
+                <p class="page-header__subtitle">L'actualité de la coopérative et du Bafing agricole</p>
+            </div>
+        </section>
+
+        <section class="news" aria-labelledby="news-title">
+            <div class="container">
+                <h2 id="news-title" class="sr-only">Liste des actualités</h2>
+                <div class="news__grid">
+                    <article class="news-card">
+                        <div class="news-card__meta">
+                            <span class="badge badge--institutional">Institutionnel</span>
+                            <time datetime="2025-06-15">15 Juin 2025</time>
+                        </div>
+                        <h3 class="news-card__title">Lancement officiel de la coopérative</h3>
+                        <p class="news-card__excerpt">Cérémonie officielle de présentation d'Alliance Tounga AgroCoop aux autorités locales et aux partenaires du développement. Immatriculation RCCM validée.</p>
+                        <a href="#" class="news-card__link">Lire la suite →</a>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-card__meta">
+                            <span class="badge badge--agriculture">Agriculture</span>
+                            <time datetime="2025-06-20">20 Juin 2025</time>
+                        </div>
+                        <h3 class="news-card__title">Acquisition du tracteur Massey Ferguson MF3080</h3>
+                        <p class="news-card__excerpt">Premier investissement matériel majeur pour la préparation des 100 hectares. Le tracteur sera mutualisé entre les membres selon un planning établi.</p>
+                        <a href="#" class="news-card__link">Lire la suite →</a>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-card__meta">
+                            <span class="badge badge--agriculture">Agriculture</span>
+                            <time datetime="2025-11-30">30 Novembre 2025</time>
+                        </div>
+                        <h3 class="news-card__title">Première récolte rizicole</h3>
+                        <p class="news-card__excerpt">Les premiers champs préparés entrent en production. Objectif : 7 tonnes/hectare pour cette première campagne pilote sur 20 hectares.</p>
+                        <a href="#" class="news-card__link">Lire la suite →</a>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-card__meta">
+                            <span class="badge badge--fishery">Pisciculture</span>
+                            <time datetime="2025-08-10">10 Août 2025</time>
+                        </div>
+                        <h3 class="news-card__title">Démarrage de la filière TilapiaVert</h3>
+                        <p class="news-card__excerpt">Mise en eau des premiers bacs et introduction des alevins. Formation des membres à la pisciculture intensive en milieu rural.</p>
+                        <a href="#" class="news-card__link">Lire la suite →</a>
+                    </article>
+                </div>
+                
+                <div class="news__pagination">
+                    <button class="btn btn--secondary" disabled>← Précédent</button>
+                    <span class="pagination__info">Page 1 sur 1</span>
+                    <button class="btn btn--secondary" disabled>Suivant →</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alliance Tounga AgroCoop</p>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/225XXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
