@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr-CI">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rejoignez Alliance Tounga AgroCoop : avantages adhésion, processus de candidature et bulletin d'adhésion téléchargeable.">
+    <title>Rejoindre la Coopérative | Alliance Tounga AgroCoop</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="nav" role="navigation">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo">
+                <span class="nav__logo--orange">Alliance</span>
+                <span class="nav__logo--green">Tounga</span>
+            </a>
+            <button class="nav__burger" aria-label="Menu">
+                <span class="nav__burger-line"></span>
+                <span class="nav__burger-line"></span>
+                <span class="nav__burger-line"></span>
+            </button>
+            <ul class="nav__menu" id="menu">
+                <li><a href="index.html" class="nav__link">Accueil</a></li>
+                <li><a href="cooperative.html" class="nav__link">La Coopérative</a></li>
+                <li><a href="filieres.html" class="nav__link">Nos Filières</a></li>
+                <li><a href="produits.html" class="nav__link">Nos Produits</a></li>
+                <li><a href="impact.html" class="nav__link">Impact</a></li>
+                <li><a href="rejoindre.html" class="nav__link nav__link--active nav__link--cta">Rejoindre</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="page-header page-header--green">
+            <div class="container">
+                <h1 class="page-header__title">Rejoindre la Coopérative</h1>
+                <p class="page-header__subtitle">Devenez membre et développez votre activité agricole</p>
+            </div>
+        </section>
+
+        <section class="benefits" aria-labelledby="avantages-title">
+            <div class="container">
+                <h2 id="avantages-title" class="section__title">Avantages de l'adhésion</h2>
+                <div class="benefits__grid">
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">🚜</div>
+                        <h3>Équipements mutualisés</h3>
+                        <p>Accès prioritaire au tracteur MF3080 et aux outils agricoles à tarifs préférentiels.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">📚</div>
+                        <h3>Formation technique</h3>
+                        <p>Formations en riziculture intensive, pisciculture moderne et gestion d'entreprise agricole.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">💰</div>
+                        <h3>Accès aux financements</h3>
+                        <p>Facilitation des prêts agricoles et accès aux fonds de roulement de la coopérative.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">🌾</div>
+                        <h3>Écoulement garanti/>
+                                                </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">🌾</div>
+                        <h3>Écoulement garanti</h3>
+                        <p>Accès aux contrats d'achat groupés et aux réseaux de distribution B2B.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process" aria-labelledby="process-title">
+            <div class="container">
+                <h2 id="process-title" class="section__title">Processus d'adhésion</h2>
+                <div class="process__steps">
+                    <div class="step">
+                        <div class="step__number">1</div>
+                        <div class="step__arrow" aria-hidden="true">→</div>
+                        <div class="step__content">
+                            <h3>Candidature</h3>
+                            <p>Remplissez le formulaire ci-dessous ou téléchargez le bulletin d'adhésion</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step__number">2</div>
+                        <div class="step__arrow" aria-hidden="true">→</div>
+                        <div class="step__content">
+                            <h3>Validation CA</h3>
+                            <p>Examen de votre dossier par le Conseil d'Administration (délai 15 jours)</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step__number">3</div>
+                        <div class="step__content">
+                            <h3>Cotisation</h3>
+                            <p>Versement des parts sociales (minimum 10 000 FCFA) et admission définitive</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="adhesion-form" aria-labelledby="form-title">
+            <div class="container">
+                <div class="form-container">
+                    <h2 id="form-title" class="form-container__title">Formulaire de candidature</h2>
+                    
+                    <form class="form" id="adhesionForm" novalidate>
+                        <div class="form__row">
+                            <div class="form__group form__group--half">
+                                <label for="adhesionPrenom" class="form__label">Prénom *</label>
+                                <input type="text" id="adhesionPrenom" class="form__input" required aria-required="true">
+                                <span class="form__error">Champ requis</span>
+                            </div>
+                            
+                            <div class="form__group form__group--half">
+                                <label for="adhesionNom" class="form__label">Nom *</label>
+                                <input type="text" id="adhesionNom" class="form__input" required aria-required="true">
+                                <span class="form__error">Champ requis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionVillage" class="form__label">Village/Ville de résidence *</label>
+                            <input type="text" id="adhesionVillage" class="form__input" placeholder="Ex: Touba, Koro, Gbéléban..." required>
+                            <span class="form__error">Précisez votre localité</span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionActivite" class="form__label">Activité agricole principale *</label>
+                            <select id="adhesionActivite" class="form__select" required>
+                                <option value="">Sélectionnez une activité</option>
+                                <option value="riziculture">Riziculture</option>
+                                <option value="pisciculture">Pisciculture</option>
+                                <option value="maraichage">Maraîchage</option>
+                                <option value="manioc">Culture du manioc</option>
+                                <option value="elevage">Élevage</option>
+                                <option value="transformation">Transformation agroalimentaire</option>
+                                <option value="autre">Autre (préciser dans le message)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionTelephone" class="form__label">Téléphone (WhatsApp) *</label>
+                            <input type="tel" id="adhesionTelephone" class="form__input" placeholder="07 XX XX XX XX ou +225..." required pattern="^(\\+225|0)[0157]\\d{8}$">
+                            <span class="form__error">Format: 07 XX XX XX XX ou +225 07 XX XX XX XX</span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionMessage" class="form__label">Message complémentaire (optionnel)</label>
+                            <textarea id="adhesionMessage" class="form__textarea" rows="3" placeholder="Surface cultivée, expérience, attentes..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--large btn--full">Envoyer ma candidature</button>
+                        
+                        <div class="form__alternative">
+                            <p>Ou préférez-vous le format papier ?</p>
+                            <a href="#" class="btn btn--secondary btn--full" download>Télécharger le bulletin d'adhésion (PDF)</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Espace Membres V2 (commenté pour évolution future) -->
+        <!--
+        <section id="espace-membres-v2" style="display: none;">
+            <div class="container">
+                <h2>Espace Membres</h2>
+                <p>Fonctionnalités futures : suivi des cotisations, commandes en ligne, actualités internes</p>
+            </div>
+        </section>
+        -->
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alliance Tounga AgroCoop - RCCM CI-TBA-01-2025-C10-00186</p>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/225XXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
+
