@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr-CI">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Alliance Tounga AgroCoop : coordonnées, formulaire de contact et localisation à Touba, Bafing.">
+    <title>Contact | Alliance Tounga AgroCoop</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- INJECT:NAV -->
+
+    <main class="main">
+        <section class="page-hero">
+            <div class="page-hero__background" aria-hidden="true">
+                <picture>
+                    <source srcset="assets/hero-coop.webp" type="image/webp">
+                    <img src="assets/hero-coop.png" alt="Discussion sur un projet agricole" loading="eager" fetchpriority="high">
+                </picture>
+            </div>
+            <div class="page-hero__overlay"></div>
+            <div class="page-hero__content container">
+                <h1 class="page-hero__title">Contact</h1>
+                <p class="page-hero__subtitle">Échangeons sur vos projets agricoles</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="contact-layout">
+                <section class="contact-info" aria-labelledby="coord-title">
+                    <h2 id="coord-title" class="section__title">Coordonnées</h2>
+                    <div class="info-card">
+                        <h3>Siège social</h3>
+                        <p>Touba, Région du Bafing<br>Côte d'Ivoire</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Bureau administratif</h3>
+                        <p>BP : 35 Abidjan 01<br>Côte d'Ivoire</p>
+                    </div>
+                    
+                    <div class="info-card info-card--highlight">
+                        <h3>Immatriculation</h3>
+                        <p><code>RCCM CI-TBA-01-2025-C10-00186</code></p>
+                        <p>Statut : SCOOPS</p>
+                    </div>
+
+                    <div class="contact-urgent">
+                        <h3>Urgence / WhatsApp</h3>
+                        <a href="https://wa.me/225XXXXXXXX" class="btn btn--whatsapp btn--large" target="_blank" rel="noopener">
+                            <span>📱</span> Contacter sur WhatsApp
+                        </a>
+                        <p class="contact-urgent__note">Réponse rapide garantie pour les producteurs du Bafing</p>
+                    </div>
+                </section>
+
+                <section class="contact-form-section" aria-labelledby="form-contact-title">
+                    <h2 id="form-contact-title" class="section__title">Formulaire de contact</h2>
+                    <form class="form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                        <!-- Honeypot anti-spam -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="form__group">
+                            <label for="contactObjet" class="form__label">Objet *</label>
+                            <select id="contactObjet" name="objet" class="form__select" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="partenariat">Proposition de partenariat</option>
+                                <option value="adhesion">Demande d'adhésion</option>
+                                <option value="achat">Achat de produits</option>
+                                <option value="presse">Contact presse</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="contactNom" class="form__label">Nom complet *</label>
+                            <input type="text" id="contactNom" name="nom" class="form__input" required>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="contactTelephone" class="form__label">Téléphone *</label>
+                            <input type="tel" id="contactTelephone" name="telephone" class="form__input" required pattern="^(\\+225|0)[0157]\\d{8}$" placeholder="07 XX XX XX XX">
+                            <span class="form__error">Format: 07 XX XX XX XX ou +225 7 XX XX XX XX</span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="contactEmail" class="form__label">Email (optionnel)</label>
+                            <input type="email" id="contactEmail" name="email" class="form__input" placeholder="Si vous avez une adresse email">
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="contactMessage" class="form__label">Message *</label>
+                            <textarea id="contactMessage" name="message" class="form__textarea" rows="5" required placeholder="Détaillez votre demande..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--large btn--full">Envoyer le message</button>
+                        
+                        <p class="form__privacy">Les données sont traitées conformément à la législation ivoirienne sur la protection des données.</p>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Map placeholder -->
+            <section class="map-section" aria-label="Localisation">
+                <div class="map-placeholder">
+                    <p>🗺️ Carte Google Maps à intégrer ici</p>
+                    <small>Coordonnées GPS : 8.2833° N, 7.6833° W (Touba, Côte d'Ivoire)</small>
+                    <!-- 
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=..." 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                    -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- INJECT:FOOTER -->
+    
+    
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>

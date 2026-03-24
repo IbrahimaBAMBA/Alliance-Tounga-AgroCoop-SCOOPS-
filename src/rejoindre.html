@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr-CI">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rejoignez Alliance Tounga AgroCoop : avantages adhésion, processus de candidature et bulletin d'adhésion téléchargeable.">
+    <title>Rejoindre la Coopérative | Alliance Tounga AgroCoop</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- INJECT:NAV -->
+
+    <main class="main">
+        <section class="page-hero">
+            <div class="page-hero__background" aria-hidden="true">
+                <picture>
+                    <source srcset="assets/hero-impact.webp" type="image/webp">
+                    <img src="assets/hero-impact.png" alt="Communauté agricole rayonnante" loading="eager" fetchpriority="high">
+                </picture>
+            </div>
+            <div class="page-hero__overlay"></div>
+            <div class="page-hero__content container">
+                <h1 class="page-hero__title">Rejoindre la Coopérative</h1>
+                <p class="page-hero__subtitle">Devenez membre et développez votre activité agricole</p>
+            </div>
+        </section>
+
+        <section class="benefits" aria-labelledby="avantages-title">
+            <div class="container">
+                <h2 id="avantages-title" class="section__title">Avantages de l'adhésion</h2>
+                <div class="benefits__grid">
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">🚜</div>
+                        <h3>Équipements mutualisés</h3>
+                        <p>Accès prioritaire au tracteur MF3080 et aux outils agricoles à tarifs préférentiels.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">📚</div>
+                        <h3>Formation technique</h3>
+                        <p>Formations en riziculture intensive, pisciculture moderne et gestion d'entreprise agricole.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">💰</div>
+                        <h3>Accès aux financements</h3>
+                        <p>Facilitation des prêts agricoles et accès aux fonds de roulement de la coopérative.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">🌾</div>
+                        <h3>Écoulement garanti/>
+                                                </div>
+                    <div class="benefit-item">
+                        <div class="benefit-item__icon">🌾</div>
+                        <h3>Écoulement garanti</h3>
+                        <p>Accès aux contrats d'achat groupés et aux réseaux de distribution B2B.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process" aria-labelledby="process-title">
+            <div class="container">
+                <h2 id="process-title" class="section__title">Processus d'adhésion</h2>
+                <div class="process__steps">
+                    <div class="step">
+                        <div class="step__number">1</div>
+                        <div class="step__arrow" aria-hidden="true">→</div>
+                        <div class="step__content">
+                            <h3>Candidature</h3>
+                            <p>Remplissez le formulaire ci-dessous ou téléchargez le bulletin d'adhésion</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step__number">2</div>
+                        <div class="step__arrow" aria-hidden="true">→</div>
+                        <div class="step__content">
+                            <h3>Validation CA</h3>
+                            <p>Examen de votre dossier par le Conseil d'Administration (délai 15 jours)</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step__number">3</div>
+                        <div class="step__content">
+                            <h3>Cotisation</h3>
+                            <p>Versement des parts sociales (minimum 10 000 FCFA) et admission définitive</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="adhesion-form" aria-labelledby="form-title">
+            <div class="container">
+                <div class="form-container">
+                    <h2 id="form-title" class="form-container__title">Formulaire de candidature</h2>
+                    
+                    <form class="form" id="adhesionForm" novalidate>
+                        <div class="form__row">
+                            <div class="form__group form__group--half">
+                                <label for="adhesionPrenom" class="form__label">Prénom *</label>
+                                <input type="text" id="adhesionPrenom" class="form__input" required aria-required="true">
+                                <span class="form__error">Champ requis</span>
+                            </div>
+                            
+                            <div class="form__group form__group--half">
+                                <label for="adhesionNom" class="form__label">Nom *</label>
+                                <input type="text" id="adhesionNom" class="form__input" required aria-required="true">
+                                <span class="form__error">Champ requis</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionVillage" class="form__label">Village/Ville de résidence *</label>
+                            <input type="text" id="adhesionVillage" class="form__input" placeholder="Ex: Touba, Koro, Gbéléban..." required>
+                            <span class="form__error">Précisez votre localité</span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionActivite" class="form__label">Activité agricole principale *</label>
+                            <select id="adhesionActivite" class="form__select" required>
+                                <option value="">Sélectionnez une activité</option>
+                                <option value="riziculture">Riziculture</option>
+                                <option value="pisciculture">Pisciculture</option>
+                                <option value="maraichage">Maraîchage</option>
+                                <option value="manioc">Culture du manioc</option>
+                                <option value="elevage">Élevage</option>
+                                <option value="transformation">Transformation agroalimentaire</option>
+                                <option value="autre">Autre (préciser dans le message)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionTelephone" class="form__label">Téléphone (WhatsApp) *</label>
+                            <input type="tel" id="adhesionTelephone" class="form__input" placeholder="07 XX XX XX XX ou +225..." required pattern="^(\\+225|0)[0157]\\d{8}$">
+                            <span class="form__error">Format: 07 XX XX XX XX ou +225 07 XX XX XX XX</span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="adhesionMessage" class="form__label">Message complémentaire (optionnel)</label>
+                            <textarea id="adhesionMessage" class="form__textarea" rows="3" placeholder="Surface cultivée, expérience, attentes..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--large btn--full">Envoyer ma candidature</button>
+                        
+                        <div class="form__alternative">
+                            <p>Ou préférez-vous le format papier ?</p>
+                            <a href="#" class="btn btn--secondary btn--full" download>Télécharger le bulletin d'adhésion (PDF)</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Espace Membres V2 (commenté pour évolution future) -->
+        <!--
+        <section id="espace-membres-v2" style="display: none;">
+            <div class="container">
+                <h2>Espace Membres</h2>
+                <p>Fonctionnalités futures : suivi des cotisations, commandes en ligne, actualités internes</p>
+            </div>
+        </section>
+        -->
+    </main>
+
+    <!-- INJECT:FOOTER -->
+    
+    
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
+

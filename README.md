@@ -1,43 +1,48 @@
-﻿# Alliance-Tounga-AgroCoop-SCOOPS-
-Site vitrine institutionnel mobile-first pour la coopérative agricole ivoirienne.
+# Alliance Tounga AgroCoop - Site Web
+
+Site vitrine institutionnel mobile-first pour la coopérative agricole ivoirienne. Ce projet utilise un script de compilation Node.js ultra-léger pour gérer les templates et optimiser les images.
 
 ## Structure
+
 /
-├── index.html          # Accueil
-├── cooperative.html    # Qui sommes-nous
-├── filieres.html       # Nos 4 filières
-├── produits.html       # Catalogue B2B
-├── impact.html         # Impact social
-├── rejoindre.html      # Adhésion
-├── partenariats.html   # Financements
-├── contact.html        # Contact + formulaires
-├── css/
-│   └── styles.css      # Vanilla CSS (15KB)
-├── js/
-│   └── main.js         # Vanilla JS (5KB)
-└── assets/
-    └── .gitkeep        # Images à ajouter ici
-    
+├── src/                # Code source du site
+│   ├── components/     # Fragments réutilisables (nav.html, footer.html)
+│   ├── assets/         # Images originales (Jpg, Png)
+│   ├── css/            # Styles Vanilla CSS
+│   ├── js/             # Scripts Vanilla JS
+│   └── *.html          # Pages HTML avec tags d'injection
+├── dist/               # Dossier généré, prêt pour la production (NE PAS MODIFIER MANUELLEMENT)
+├── build.js            # Script de compilation Node.js
+└── package.json        # Dépendances (sharp)
+
+## Développement & Build
+
+1. Installez Node.js sur votre machine.
+2. Installez les dépendances locales :
+   ```bash
+   npm install
+   ```
+3. Pour compiler le site (injection du HTML et conversion des assets en WebP) :
+   ```bash
+   npm run build
+   # (Ou utilisez `node build.js`)
+   ```
+4. Le dossier `dist/` est mis à jour ! Utilisez un serveur local (`npx serve dist`) pour tester.
+
 ## Performance
 
-- **Budget**: < 50KB CSS, < 10KB JS (minifié)
-- **Chargement**: < 1.5s sur 3G
-- **Lighthouse**: Objectif 90+
+- **Images** : Automatiquement converties en WebP via `sharp`.
+- **Budget** : < 50KB CSS, < 10KB JS.
+- **Chargement** : Extrêmement rapide sur 3G rural (Côte d'Ivoire).
 
 ## Déploiement
 
 ### Option 1 : Netlify (Recommandé)
-1. Zipper le dossier (sans node_modules)
-2. Glisser-déposer sur [netlify.com](https://netlify.com)
-3. Configurer le nom de domaine
+1. Poussez le code sur GitHub.
+2. Connectez le dépôt à Netlify.
+3. Spécifiez la commande de build : `npm install && npm run build` (déjà configuré si vous pointez "Build command").
+4. Dossier de publication (Publish directory) : `dist`
 
-### Option 2 : GitHub Pages
-1. Créer repo `alliance-tounga-site`
-2. Pousser le code
-3. Activer GitHub Pages dans Settings > Pages
-
-### Formulaires
-Remplacer `YOUR_FORM_ID` dans contact.html par votre ID Formspree :
-```html
-<form action="https://formspree.io/f/VOTRE_ID" method="POST">
-
+### Option 2 : Déploiement Manuel
+1. Exécutez `npm run build` sur votre machine.
+2. Uploadez UNIQUEMENT le contenu du dossier `dist/` sur votre hébergeur (FTP / cPanel).

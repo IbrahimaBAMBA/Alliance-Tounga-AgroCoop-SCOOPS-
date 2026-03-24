@@ -1,0 +1,23 @@
+{
+  "name": "alliance-tounga-agrocoop-scoops-",
+  "version": "1.0.0",
+  "description": "Site vitrine institutionnel mobile-first pour la coopérative agricole ivoirienne.",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IbrahimaBAMBA/Alliance-Tounga-AgroCoop-SCOOPS-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IbrahimaBAMBA/Alliance-Tounga-AgroCoop-SCOOPS-/issues"
+  },
+  "homepage": "https://github.com/IbrahimaBAMBA/Alliance-Tounga-AgroCoop-SCOOPS-#readme",
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

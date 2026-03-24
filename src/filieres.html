@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr-CI">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nos filières agricoles : riziculture WITA-9, pisciculture TilapiaVert, transformation manioc et maraîchage dans la région du Bafing.">
+    <title>Nos Filières | Alliance Tounga AgroCoop</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- INJECT:NAV -->
+
+    <main class="main">
+        <section class="page-hero">
+            <div class="page-hero__background" aria-hidden="true">
+                <picture>
+                    <source srcset="assets/hero-filieres.webp" type="image/webp">
+                    <img src="assets/hero-filieres.png" alt="Paysage agricole et rizières de la coopérative" loading="eager" fetchpriority="high">
+                </picture>
+            </div>
+            <div class="page-hero__overlay"></div>
+            <div class="page-hero__content container">
+                <h1 class="page-hero__title">Nos Filières</h1>
+                <p class="page-hero__subtitle">Production durable et circuits courts</p>
+            </div>
+        </section>
+
+        <section class="filieres" aria-label="Nos activités agricoles">
+            <div class="container">
+                <div class="filieres__grid">
+                    <article class="filiere-card filiere-card--large reveal-card">
+                        <div class="filiere-card__image">
+                            <picture>
+                                <source srcset="assets/riz-paddy.webp" type="image/webp">
+                                <img src="assets/riz-paddy.jpg" alt="Champs de Riziculture" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="filiere-card__content">
+                            <h2 class="filiere-card__title">Riziculture</h2>
+                            <p class="filiere-card__text">Culture principale de notre coopérative, s'étendant sur les terres fertiles du Bafing.</p>
+                            <ul class="filiere-card__stats">
+                                <li><strong>Variétés :</strong> WITA-9, Bouaké-AM</li>
+                                <li><strong>Rendement :</strong> 7-9 tonnes/ha</li>
+                                <li><strong>Système :</strong> Irrigué et pluvial</li>
+                                <li><strong>Objectif :</strong> 100 hectares exploités</li>
+                            </ul>
+                            <a href="produits.html#riz" class="btn btn--primary" style="margin-top: 1rem;">Voir la production</a>
+                        </div>
+                    </article>
+
+                    <article class="filiere-card reveal-card">
+                        <div class="filiere-card__image">
+                            <picture>
+                                <source srcset="assets/tilapia.webp" type="image/webp">
+                                <img src="assets/tilapia.jpg" alt="Bassin de Tilapia" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="filiere-card__content">
+                            <h2 class="filiere-card__title">Pisciculture</h2>
+                            <ul class="filiere-card__stats">
+                                <li><strong>Spécialité :</strong> TilapiaVert</li>
+                                <li><strong>Technique :</strong> Bacs hors-sol premium</li>
+                                <li><strong>Production :</strong> Cycle de 6 mois</li>
+                            </ul>
+                            <a href="produits.html#poisson" class="btn btn--primary" style="margin-top: 1rem;">Voir la production</a>
+                        </div>
+                    </article>
+
+                    <article class="filiere-card reveal-card">
+                        <div class="filiere-card__image">
+                            <picture>
+                                <source srcset="assets/hero-3.webp" type="image/webp">
+                                <img src="assets/hero-3.jpg" alt="Production de Manioc" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="filiere-card__content">
+                            <h2 class="filiere-card__title">Manioc</h2>
+                            <ul class="filiere-card__stats">
+                                <li><strong>Transformation :</strong> Attiéké traditionnel</li>
+                                <li><strong>Dérivés :</strong> Amidon, farine</li>
+                                <li><strong>Circuit :</strong> Court et local</li>
+                            </ul>
+                            <a href="produits.html#manioc" class="btn btn--primary" style="margin-top: 1rem;">Voir la production</a>
+                        </div>
+                    </article>
+
+                    <article class="filiere-card reveal-card">
+                        <div class="filiere-card__image">
+                            <picture>
+                                <source srcset="assets/legumes.webp" type="image/webp">
+                                <img src="assets/legumes.jpg" alt="Cultures Maraîchères" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="filiere-card__content">
+                            <h2 class="filiere-card__title">Maraîchage</h2>
+                            <ul class="filiere-card__stats">
+                                <li><strong>Productions :</strong> Aubergine, piment</li>
+                                <li><strong>Complément :</strong> Tomate, Soja</li>
+                                <li><strong>Calendrier :</strong> Toute l'année</li>
+                            </ul>
+                            <a href="produits.html#legumes" class="btn btn--primary" style="margin-top: 1rem;">Voir la production</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- INJECT:FOOTER -->
+    
+    <script src="js/main.js" defer></script>
+    <script>
+    // --- Scroll Reveal Animation for Cards ---
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initial setup for CSS via JS to avoid flicker without JS
+        const style = document.createElement('style');
+        style.textContent = `
+            .reveal-card {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .reveal-card.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+
+        const cards = document.querySelectorAll('.reveal-card');
+        if (typeof IntersectionObserver !== 'undefined' && cards.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, i * 150); // Staggered delay based on index
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            cards.forEach(card => observer.observe(card));
+        } else {
+            cards.forEach(card => card.classList.add('is-visible'));
+        }
+    });
+    </script>
+</body>
+</html>
