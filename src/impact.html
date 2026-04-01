@@ -63,28 +63,52 @@
                     <article class="impact-card">
                         <h3>🌱 Transition Agroécologique</h3>
                         <p>Système de riziculture irrigué optimisé réduisant l'usage des intrants chimiques de 40%. Bacs de pisciculture en circuit fermé zéro rejet dans les cours d'eau naturels.</p>
-                        <span class="impact-number">-40%</span>
+                        <div class="progress-ring reveal-card" data-percent="40">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="progress-ring__circle" cx="60" cy="60" r="54"></circle>
+                                <circle class="progress-ring__value" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <span class="progress-ring__text">-40%</span>
+                        </div>
                         <small>Produits phytosanitaires</small>
                     </article>
 
                     <article class="impact-card impact-card--green">
                         <h3>👩 Autonomisation des Femmes</h3>
                         <p>Priorité aux femmes dans l'accès aux équipements mutualisés et aux formations techniques. Création d'un fonds de roulement dédié aux projets féminins.</p>
-                        <span class="impact-number">60%</span>
+                        <div class="progress-ring reveal-card" data-percent="60">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="progress-ring__circle" cx="60" cy="60" r="54"></circle>
+                                <circle class="progress-ring__value" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <span class="progress-ring__text">60%</span>
+                        </div>
                         <small>Des bénéficiaires de formations</small>
                     </article>
 
                     <article class="impact-card">
                         <h3>👨‍🌾 Insertion des Jeunes</h3>
                         <p>Programme "Retour à la terre" pour les diplômés sans emploi. Stages rémunérés en riziculture et aquaculture avec possibilité d'intégration coopérative.</p>
-                        <span class="impact-number">100%</span>
+                        <div class="progress-ring reveal-card" data-percent="100">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="progress-ring__circle" cx="60" cy="60" r="54"></circle>
+                                <circle class="progress-ring__value" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <span class="progress-ring__text">100%</span>
+                        </div>
                         <small>Jeunes formés employables</small>
                     </article>
 
                     <article class="impact-card impact-card--green">
                         <h3>🍚 Souveraineté Alimentaire</h3>
                         <p>Réduction des importations de riz sur la région du Bafing. Approvisionnement des cantines scolaires et marchés locaux en produits frais.</p>
-                        <span class="impact-number">150t</span>
+                        <div class="progress-ring reveal-card" data-percent="100">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="progress-ring__circle" cx="60" cy="60" r="54"></circle>
+                                <circle class="progress-ring__value" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <span class="progress-ring__text">150t</span>
+                        </div>
                         <small>Capacité de production/an</small>
                     </article>
                 </div>
@@ -94,14 +118,36 @@
         <section class="testimonials" aria-labelledby="temoignages-title">
             <div class="container">
                 <h2 id="temoignages-title" class="section__title">Témoignages</h2>
-                <div class="features__grid">
-                    <div class="feature-card">
-                        <p style="font-style: italic; margin-bottom: 1rem;">"Grâce au tracteur de la coopérative, j'ai pu labourer mes 2 hectares en 1 jour seulement. Avant, c'était 2 semaines de travail manuel."</p>
-                        <strong>— Amadou K., Producteur membre</strong>
+                <div class="testimonial-carousel reveal-card">
+                    <div class="testimonial-carousel__track" id="testimonialTrack">
+                        <div class="testimonial-carousel__slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-card__quote">"Grâce au tracteur de la coopérative, j'ai pu labourer mes 2 hectares en 1 jour seulement. Avant, c'était 2 semaines de travail manuel."</p>
+                                <div class="testimonial-card__author">
+                                    <div class="testimonial-card__avatar">AK</div>
+                                    <div class="testimonial-card__info">
+                                        <strong>Amadou K.</strong>
+                                        <span>Producteur membre</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-carousel__slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-card__quote">"La formation en pisciculture m'a permise de diversifier mon activité. Mes premiers bacs de tilapia seront récoltés bientôt."</p>
+                                <div class="testimonial-card__author">
+                                    <div class="testimonial-card__avatar" style="background:var(--orange-ci);">FB</div>
+                                    <div class="testimonial-card__info">
+                                        <strong>Fatou B.</strong>
+                                        <span>Productrice piscicole</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <p style="font-style: italic; margin-bottom: 1rem;">"La formation en pisciculture m'a permise de diversifier mon activité. Mes premiers bacs de tilapia seront récoltés bientôt."</p>
-                        <strong>— Fatou B., Productrice piscicole</strong>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn" aria-label="Précédent">&#8592;</button>
+                        <button class="carousel-btn" id="nextBtn" aria-label="Suivant">&#8594;</button>
                     </div>
                 </div>
             </div>
@@ -113,5 +159,110 @@
     
 
     <script src="js/main.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const target = entry.target;
+                    const endVal = parseInt(target.getAttribute('data-target'));
+                    const suffix = target.getAttribute('data-suffix') || '';
+                    let startVal = 0;
+                    const duration = 2000;
+                    const stepTime = Math.abs(Math.floor(duration / endVal)) || 50;
+                    
+                    const timer = setInterval(() => {
+                        startVal += 1;
+                        if(startVal >= endVal) {
+                            startVal = endVal;
+                            clearInterval(timer);
+                        }
+                        target.innerText = startVal + suffix;
+                    }, stepTime);
+                    countObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => countObserver.observe(c));
+
+        // 2. Progress Rings Animation
+        const rings = document.querySelectorAll('.progress-ring');
+        const ringObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const ring = entry.target;
+                    const circle = ring.querySelector('.progress-ring__value');
+                    const percent = parseInt(ring.getAttribute('data-percent'));
+                    if (circle) {
+                        const radius = circle.r.baseVal.value;
+                        const circumference = radius * 2 * Math.PI;
+                        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                        circle.style.strokeDashoffset = circumference;
+                        
+                        // Force browser reflow to apply offset transition
+                        circle.getBoundingClientRect();
+                        
+                        const offset = circumference - (percent / 100) * circumference;
+                        circle.style.strokeDashoffset = offset;
+                    }
+                    ringObserver.unobserve(ring);
+                }
+            });
+        }, { threshold: 0.3 });
+        rings.forEach(r => ringObserver.observe(r));
+
+        // 3. Testimonial Carousel Setup
+        const track = document.getElementById('testimonialTrack');
+        const slides = document.querySelectorAll('.testimonial-carousel__slide');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            if (track) { track.style.transform = `translateX(-${currentIndex * 100}%)`; }
+        }
+        
+        if (nextBtn && prevBtn && track) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            });
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel();
+            });
+            
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }, 5000);
+        }
+
+        // 4. Parallax Hero Effect & Reveals
+        const heroBg = document.querySelector('.page-hero__background img');
+        if(heroBg) {
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.pageYOffset;
+                heroBg.style.transform = `translateY(${scrollPos * 0.4}px)`;
+            });
+        }
+        
+        // Reveal elements 
+        const reveals = document.querySelectorAll('.reveal-card');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, idx) => {
+                if(entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, idx * 100);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => revealObserver.observe(el));
+    });
+    </script>
 </body>
 </html>
