@@ -87,7 +87,7 @@ button {
   background: white;
   box-shadow: var(--ombre);
   z-index: 1000;
-  height: 70px;
+  height: 84px;
 }
 
 .nav__container {
@@ -95,7 +95,7 @@ button {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
 }
 
 .nav__logo {
@@ -106,15 +106,19 @@ button {
 }
 
 .nav__logo-img {
-  height: 48px;
+  height: 68px;
   width: auto;
   object-fit: contain;
   display: block;
-  transition: transform var(--transition);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
+  transition: transform var(--transition), filter var(--transition);
 }
 
 .nav__logo:hover .nav__logo-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  filter: drop-shadow(0 3px 8px rgba(255,107,0,0.25));
 }
 
 /* Burger Menu */
@@ -152,7 +156,7 @@ button {
 /* Menu Mobile */
 .nav__menu {
   position: fixed;
-  top: 70px;
+  top: 84px;
   left: 0;
   right: 0;
   background: white;
@@ -301,7 +305,7 @@ button {
   color: white;
   text-align: center;
   padding: 6rem 1rem 4rem;
-  margin-top: 70px;
+  margin-top: 84px;
 }
 
 .hero__background {
@@ -521,7 +525,7 @@ button {
   color: white;
   text-align: center;
   padding: 6rem 1rem 4rem;
-  margin-top: 70px;
+  margin-top: 84px;
   overflow: hidden;
 }
 
@@ -1071,7 +1075,7 @@ button {
   margin-bottom: 0.5rem;
 }
 
-/* Cooperative specific â€” Timeline animÃ©e */
+/* Cooperative specific Ã¢â‚¬â€ Timeline animÃƒÂ©e */
 .timeline {
   position: relative;
   padding: 2rem 0;
@@ -1894,5 +1898,7 @@ button {
     min-height: 350px;
   }
 }
+
+
 
 
