@@ -3,24 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Actualités d'Alliance Tounga AgroCoop : lancement officiel, acquisitions, récoltes et événements du Bafing.">
-    <title>Actualités | Alliance Tounga AgroCoop</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="Actualités d'Alliance Tounga AgroCoop : presse, photos et vidéos.">
+    <title>Actualités & Médias | Alliance Tounga AgroCoop</title>
+    <link rel="stylesheet" href="css/styles.css?v=1775122547849">
+    <style>
+        /* CSS spécifique à la grille actualités premium */
+        .news-article-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+            height: 100%;
+        }
+        .news-article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 150, 57, 0.08);
+        }
+        .news-article-card__img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .news-article-card__img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .news-article-card:hover .news-article-card__img-wrapper img {
+            transform: scale(1.05);
+        }
+        .news-article-card__img-wrapper .badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .news-article-card__content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .news-article-card__date {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .news-article-card__title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+        .news-article-card__excerpt {
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .news-article-card__readmore {
+            color: var(--vert-ci);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+            text-decoration: none;
+        }
+        .news-article-card:hover .news-article-card__readmore {
+            gap: 0.8rem;
+            color: var(--orange-ci);
+        }
+
+        /* Vidéos */
+        .video-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .video-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .video-card:hover img {
+            opacity: 0.4;
+        }
+        .video-card__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--vert-ci);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 150, 57, 0.4);
+            border: 3px solid white;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .video-card:hover .video-card__play {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--orange-ci);
+        }
+        .video-card__play svg {
+            fill: white;
+            margin-left: 4px;
+        }
+        .video-card__title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        </style>
 </head>
 <body>
-        <!-- Navigation -->
-    <nav class="nav" role="navigation" aria-label="Navigation principale">
+        <!-- Navigation Premium - Sleek Frosted Glass -->
+    <nav class="nav" id="mainNav" role="navigation" aria-label="Navigation principale">
         <div class="nav__container">
+
+            <!-- Logo avec conteneur Glow -->
             <a href="index.html" class="nav__logo" aria-label="Retour accueil Alliance Tounga AgroCoop">
-                <img src="assets/logo.webp" alt="Alliance Tounga AgroCoop" class="nav__logo-img" width="170" height="68">
+                <div class="nav__logo-wrapper">
+                    <img src="assets/logo.webp" alt="Alliance Tounga AgroCoop" class="nav__logo-img" height="80" style="width: auto; max-width: 250px; object-fit: contain; transform: scale(1.1);">
+                </div>
             </a>
-            
-            <button class="nav__burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">
-                <span class="nav__burger-line"></span>
-                <span class="nav__burger-line"></span>
-                <span class="nav__burger-line"></span>
-            </button>
-            
+
+            <!-- Links (desktop) -->
             <ul class="nav__menu" id="menu" role="menubar">
                 <li role="none"><a href="index.html" class="nav__link" role="menuitem">Accueil</a></li>
                 <li role="none"><a href="cooperative.html" class="nav__link" role="menuitem">La Coopérative</a></li>
@@ -29,70 +169,159 @@
                 <li role="none"><a href="impact.html" class="nav__link" role="menuitem">Impact</a></li>
                 <li role="none"><a href="partenariats.html" class="nav__link" role="menuitem">Partenariats</a></li>
                 <li role="none"><a href="actualites.html" class="nav__link" role="menuitem">Actualités</a></li>
-                <li role="none"><a href="rejoindre.html" class="nav__link nav__link--cta" role="menuitem">Rejoindre</a></li>
                 <li role="none"><a href="contact.html" class="nav__link" role="menuitem">Contact</a></li>
             </ul>
+
+            <!-- Right zone: CTA + Burger -->
+            <div class="nav__actions">
+                <a href="rejoindre.html" class="btn btn--premium" role="button" aria-label="Rejoindre la coopérative">
+                    Rejoindre
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <button class="nav__burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu" id="burgerBtn">
+                    <span class="nav__burger-line"></span>
+                    <span class="nav__burger-line"></span>
+                    <span class="nav__burger-line"></span>
+                </button>
+            </div>
         </div>
     </nav>
 
+    <script>
+    (function() {
+        // Active link detection
+        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav__link').forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                link.classList.add('nav__link--active');
+            }
+        });
+
+        // Burger menu toggle
+        var burger = document.getElementById('burgerBtn');
+        var menu = document.getElementById('menu');
+        if (burger && menu) {
+            burger.addEventListener('click', function() {
+                var isOpen = menu.classList.toggle('active');
+                burger.setAttribute('aria-expanded', isOpen);
+                burger.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+            });
+        }
+
+        // Scroll: add scrolled class to nav
+        var nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 20) {
+                nav.classList.add('nav--scrolled');
+            } else {
+                nav.classList.remove('nav--scrolled');
+            }
+        }, { passive: true });
+    })();
+    </script>
+
 
     <main class="main">
-        <section class="page-header">
+        <section class="page-header" style="margin-top: 130px; padding-bottom: 2rem; text-align: center;">
             <div class="container">
-                <h1 class="page-header__title">Actualités</h1>
-                <p class="page-header__subtitle">L'actualité de la coopérative et du Bafing agricole</p>
+                <h1 class="page-header__title" style="color: var(--vert-ci); font-size: 2.5rem;">Actualités & Médias</h1>
+                <p class="page-header__subtitle" style="color: #1a1a1a; font-size: 1.2rem;">Suivez l'évolution de nos projets, nos photos et nos reportages vidéos.</p>
             </div>
         </section>
 
-        <section class="news" aria-labelledby="news-title">
+        <!-- GROUPE 1 : PRESSE & ÉVÉNEMENTS (Articles + Photos) -->
+        <section class="news" aria-labelledby="presse-title" style="padding-bottom: 4rem;">
             <div class="container">
-                <h2 id="news-title" class="sr-only">Liste des actualités</h2>
-                <div class="news__grid">
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--institutional">Institutionnel</span>
-                            <time datetime="2025-06-15">15 Juin 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Lancement officiel de la coopérative</h3>
-                        <p class="news-card__excerpt">Cérémonie officielle de présentation d'Alliance Tounga AgroCoop aux autorités locales et aux partenaires du développement. Immatriculation RCCM validée.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--agriculture">Agriculture</span>
-                            <time datetime="2025-06-20">20 Juin 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Acquisition du tracteur Massey Ferguson MF3080</h3>
-                        <p class="news-card__excerpt">Premier investissement matériel majeur pour la préparation des 100 hectares. Le tracteur sera mutualisé entre les membres selon un planning établi.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--agriculture">Agriculture</span>
-                            <time datetime="2025-11-30">30 Novembre 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Première récolte rizicole</h3>
-                        <p class="news-card__excerpt">Les premiers champs préparés entrent en production. Objectif : 7 tonnes/hectare pour cette première campagne pilote sur 20 hectares.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--fishery">Pisciculture</span>
-                            <time datetime="2025-08-10">10 Août 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Démarrage de la filière TilapiaVert</h3>
-                        <p class="news-card__excerpt">Mise en eau des premiers bacs et introduction des alevins. Formation des membres à la pisciculture intensive en milieu rural.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-                </div>
+                <h2 id="presse-title" class="section__title ta-center" style="margin-bottom: 3rem;">Presse & Événements</h2>
                 
-                <div class="news__pagination">
-                    <button class="btn btn--secondary" disabled>← Précédent</button>
-                    <span class="pagination__info">Page 1 sur 1</span>
-                    <button class="btn btn--secondary" disabled>Suivant →</button>
+                <div class="news__grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Article 1 -->
+                    <article class="news-article-card" onclick="openArticle('lancement')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--institutional">Institutionnel</span>
+                            <img src="assets/actu_lancement_v2_1775089761202.webp" alt="Lancement officiel" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">15 Juin 2025</span>
+                            <h3 class="news-article-card__title">Lancement officiel de la coopérative</h3>
+                            <p class="news-article-card__excerpt">Cérémonie officielle de présentation d'Alliance Tounga AgroCoop aux autorités locales et aux partenaires du développement. L'événement marque un tournant dans la région du Bafing.</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="news-article-card" onclick="openArticle('tracteur')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--agriculture">Agriculture</span>
+                            <img src="assets/actu_tracteur_1775089318405.webp" alt="Tracteur acquis" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">20 Juin 2025</span>
+                            <h3 class="news-article-card__title">Acquisition d'un tracteur moderne</h3>
+                            <p class="news-article-card__excerpt">Premier investissement matériel majeur pour la préparation de nos vastes hectares de culture. La mécanisation est encerclée au coeur de notre politique de productivité.</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="news-article-card" onclick="openArticle('recolte')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--agriculture">Agriculture</span>
+                            <img src="assets/actu_recolte_1775089333046.webp" alt="Récolte rizicole" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">30 Novembre 2025</span>
+                            <h3 class="news-article-card__title">Immense moisson rizicole</h3>
+                            <p class="news-article-card__excerpt">Nos champs entrent en production intensive. Un succès salué par tous nos braves coopérateurs. Objectif pulvérisé pour la campagne pilote !</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="news-article-card" onclick="openArticle('tilapia')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--fishery" style="background:#0284c7;color:white;">Pisciculture</span>
+                            <img src="assets/actu_tilapia_1775089347425.webp" alt="Bacs tilapia" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">10 Août 2025</span>
+                            <h3 class="news-article-card__title">Démarrage des unités Tilapia</h3>
+                            <p class="news-article-card__excerpt">Mise en eau des tous premiers bacs et solide formation des membres à la pisciculture intensive adaptée à nos milieux ruraux.</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- GROUPE 2 : VIDÉOTHÈQUE -->
+        <section class="videos" aria-labelledby="videos-title" style="background: var(--blanc-creme); padding: 4rem 0;">
+            <div class="container">
+                <h2 id="videos-title" class="section__title ta-center" style="margin-bottom: 3rem;">Vidéothèque & Reportages</h2>
+                
+                <div class="news__grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Vidéo 1 -->
+                    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/GbBFsqf262Q?autoplay=1&start=14')">
+                        <img src="assets/hero-1.webp" alt="Video Placeholder 1" loading="lazy">
+                        <div class="video-card__play">
+                            <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                        <div class="video-card__title">Intervention du Président sur la vision Coopérative 2030</div>
+                    </div>
+
+                    <!-- Vidéo 2 -->
+                    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/g55MxGtG63k?autoplay=1')">
+                        <img src="assets/hero-agri-pisciculture.webp" alt="Video Placeholder 2" loading="lazy">
+                        <div class="video-card__play">
+                            <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                        <div class="video-card__title">Reportage drone : Immersion dans nos champs de manioc</div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -132,9 +361,24 @@
                 
                 <div class="footer__contact">
                     <h4 class="footer__subtitle">Contact rapide</h4>
-                    <a href="https://wa.me/225XXXXXXXX" class="btn btn--whatsapp" target="_blank" rel="noopener">
-                        <span aria-hidden="true">📱</span> WhatsApp Business
-                    </a>
+                    <a href="contact.html" class="btn btn--whatsapp">
+                        <span aria-hidden="true">📝</span> Formulaire de Contact</a>
+
+                    <h4 class="footer__subtitle" style="margin-top: 2rem;">Suivez-nous</h4>
+                    <div class="footer__socials">
+                        <a href="#" class="social-btn" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.17-3.61-5.46-.05-.89.12-1.8.46-2.61.39-1.14 1.05-2.14 1.95-2.91 1.12-.95 2.52-1.4 3.99-1.46.06.01.12.01.19.01v4.03c-.22 0-.44-.01-.66.01-.89.04-1.74.45-2.31 1.14-.54.61-.8 1.48-.68 2.31.14 1.09.84 2.1 1.79 2.56.9.46 2 .51 2.94.13 1.09-.43 1.92-1.43 2.16-2.59.1-.56.12-1.14.12-1.71V.02h2.51z"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -145,15 +389,125 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/225XXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+    <a href="contact.html" class="whatsapp-float" aria-label="Contacter via le Formulaire">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
     </a>
 
     
-    
+    <!-- MODAL POUR ARTICLE DYNAMIQUE -->
+    <div class="modal-overlay" id="articleModalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Titre par défaut -->
+                <span style="font-weight:700; color:var(--vert-ci);">Article Complet</span>
+                <button class="modal-close" id="closeModalBtn" aria-label="Fermer l'article">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Le contenu de l'article sera injecté ici par JS -->
+            </div>
+        </div>
+    </div>
 
-    <script src="js/main.js" defer></script>
+    <!-- SCRIPT DE GESTION DE LA POP-UP MODALE -->
+    <script>
+        // Fake database des articles
+        const articlesDB = {
+            'lancement': {
+                title: "Lancement officiel de la coopérative",
+                date: "15 Juin 2025",
+                badge: "<span class='badge badge--institutional'>Institutionnel</span>",
+                text: "<p>Cérémonie officielle de présentation d'Alliance Tounga AgroCoop aux autorités locales et aux partenaires du développement. L'événement marque un tournant dans la région du Bafing.</p><p>Devant un parterre d'invités, le président a exposé les objectifs de productivité et de réduction de la pauvreté. L'immatriculation RCCM a été validée, dotant la structure d'un statut juridique solide.</p>",
+                images: ["assets/actu_lancement_v2_1775089761202.webp"]
+            },
+            'tracteur': {
+                title: "Acquisition d'un tracteur moderne",
+                date: "20 Juin 2025",
+                badge: "<span class='badge badge--agriculture'>Agriculture</span>",
+                text: "<p>Premier investissement matériel majeur pour la préparation de nos 100 hectares. Le tracteur de type Massey Ferguson sera mutualisé entre les membres selon un planning strict.</p><p>Cette machine nous permettra de réduire drastiquement la pénibilité du travail de nos membres tout en augmentant la surface cultivable par membre de 400% dès la prochaine saison des pluies.</p>",
+                images: ["assets/actu_tracteur_1775089318405.webp", "assets/tracteur-mf3080.webp"]
+            },
+            'recolte': {
+                title: "Immense moisson rizicole",
+                date: "30 Novembre 2025",
+                badge: "<span class='badge badge--agriculture'>Agriculture</span>",
+                text: "<p>Les premiers champs préparés entrent en production. Ce succès a été salué par l'ensemble des coopérateurs présents aujourd'hui pour cette grande fête champêtre.</p><p>Notre rendement de la première saison approche les 7 tonnes à l'hectare, un record local rendu possible grâce aux semences améliorées et au soutien agronomique rigoureux de l'ANADER.</p>",
+                images: ["assets/actu_recolte_1775089333046.webp", "assets/riz-paddy.webp"]
+            },
+            'tilapia': {
+                title: "Démarrage des unités Tilapia",
+                date: "10 Août 2025",
+                badge: "<span class='badge badge--fishery' style='background:#0284c7;color:white;'>Pisciculture</span>",
+                text: "<p>Mise en eau des premiers bacs circulaires et introduction de plus de 50 000 alevins. Les membres ont bénéficié d'une formation complète en gestion piscicole moderne intensive.</p><p>Ce volet garantit non seulement un approvisionnement en protéines pour nos populations locales de Tounga, mais projette également une forte rentabilité commerciale d'ici 6 mois.</p>",
+                images: ["assets/actu_tilapia_1775089347425.webp", "assets/filiere_pisciculture_aquaterra.webp"]
+            }
+        };
+
+        const modalOverlay = document.getElementById('articleModalOverlay');
+        const modalBody = document.getElementById('modalBody');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        function openArticle(id) {
+            const data = articlesDB[id];
+            if(!data) return;
+
+            // Formater les images en galerie
+            let galleryHTML = '';
+            if(data.images && data.images.length > 0) {
+                galleryHTML = '<div class="modal-article__gallery">';
+                data.images.forEach(imgUrl => {
+                    galleryHTML += '<img src="' + imgUrl + '" alt="Photo de l\'article" loading="lazy">';
+                });
+                galleryHTML += '</div>';
+            }
+
+            // Construire le HTML intérieur
+            const html = `
+                <div class="modal-article__meta">
+                    ${data.badge}
+                    <time>${data.date}</time>
+                </div>
+                <h1 class="modal-article__title">${data.title}</h1>
+                <div class="modal-article__text">
+                    ${data.text}
+                </div>
+                ${galleryHTML}
+            `;
+
+            modalBody.innerHTML = html;
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // bloque le scroll du fond
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            // Couper la vidéo si l'utilisateur ferme la modale
+            setTimeout(() => {
+                modalBody.innerHTML = ''; 
+            }, 400); // attendre fin de l'animation
+        }
+
+        function openVideo(url) {
+            const html = `
+                <div style="position:relative; width:100%; padding-bottom:56.25%;">
+                    <iframe src="${url}" style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:12px;" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            `;
+            modalBody.innerHTML = html;
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function(e) {
+            // Fermer si clic en dehors du contenu
+            if(e.target === modalOverlay) closeModal();
+        });
+    </script>
+    <script src="js/main.js?v=1775122547849" defer></script>
 </body>
 </html>
