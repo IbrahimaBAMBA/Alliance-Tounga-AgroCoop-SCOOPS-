@@ -32,8 +32,13 @@ htmlFiles.forEach(file => {
     // Replace .jpg and .png with .webp for assets
     content = content.replace(/(assets\/[^"']+)\.(jpg|jpeg|png|JPG|JPEG|PNG)/g, '$1.webp');
     
+    // Add cache buster to styles and scripts to prevent stale browser cache
+    const cacheBuster = `?v=${Date.now()}`;
+    content = content.replace(/href="css\/styles\.css(\?v=[0-9]+)?"/g, `href="css/styles.css${cacheBuster}"`);
+    content = content.replace(/src="js\/main\.js(\?v=[0-9]+)?"/g, `src="js/main.js${cacheBuster}"`);
+    
     fs.writeFileSync(path.join(DIST_DIR, file), content);
-    console.log(`Processed: ${file}`);
+    console.log(`Processed: ${file} (with cache busting)`);
 });
 
 // Copy CSS and JS

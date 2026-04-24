@@ -3,70 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Actualités d'Alliance Tounga AgroCoop : lancement officiel, acquisitions, récoltes et événements du Bafing.">
-    <title>Actualités | Alliance Tounga AgroCoop</title>
+    <meta name="description" content="Actualités d'Alliance Tounga AgroCoop : presse, photos et vidéos.">
+    <title>Actualités & Médias | Alliance Tounga AgroCoop</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* CSS spécifique à la grille actualités premium */
+        .news-article-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+            height: 100%;
+        }
+        .news-article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 150, 57, 0.08);
+        }
+        .news-article-card__img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .news-article-card__img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .news-article-card:hover .news-article-card__img-wrapper img {
+            transform: scale(1.05);
+        }
+        .news-article-card__img-wrapper .badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .news-article-card__content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .news-article-card__date {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .news-article-card__title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+        .news-article-card__excerpt {
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .news-article-card__readmore {
+            color: var(--vert-ci);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+            text-decoration: none;
+        }
+        .news-article-card:hover .news-article-card__readmore {
+            gap: 0.8rem;
+            color: var(--orange-ci);
+        }
+
+        /* Vidéos */
+        .video-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .video-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .video-card:hover img {
+            opacity: 0.4;
+        }
+        .video-card__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--vert-ci);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 150, 57, 0.4);
+            border: 3px solid white;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .video-card:hover .video-card__play {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--orange-ci);
+        }
+        .video-card__play svg {
+            fill: white;
+            margin-left: 4px;
+        }
+        .video-card__title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        </style>
 </head>
 <body>
     <!-- INJECT:NAV -->
 
     <main class="main">
-        <section class="page-header">
+        <section class="page-header" style="margin-top: 130px; padding-bottom: 2rem; text-align: center;">
             <div class="container">
-                <h1 class="page-header__title">Actualités</h1>
-                <p class="page-header__subtitle">L'actualité de la coopérative et du Bafing agricole</p>
+                <h1 class="page-header__title" style="color: var(--vert-ci); font-size: 2.5rem;">Actualités & Médias</h1>
+                <p class="page-header__subtitle" style="color: #1a1a1a; font-size: 1.2rem;">Suivez l'évolution de nos projets, nos photos et nos reportages vidéos.</p>
             </div>
         </section>
 
-        <section class="news" aria-labelledby="news-title">
+        <!-- GROUPE 1 : PRESSE & ÉVÉNEMENTS (Articles + Photos) -->
+        <section class="news" aria-labelledby="presse-title" style="padding-bottom: 4rem;">
             <div class="container">
-                <h2 id="news-title" class="sr-only">Liste des actualités</h2>
-                <div class="news__grid">
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--institutional">Institutionnel</span>
-                            <time datetime="2025-06-15">15 Juin 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Lancement officiel de la coopérative</h3>
-                        <p class="news-card__excerpt">Cérémonie officielle de présentation d'Alliance Tounga AgroCoop aux autorités locales et aux partenaires du développement. Immatriculation RCCM validée.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--agriculture">Agriculture</span>
-                            <time datetime="2025-06-20">20 Juin 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Acquisition du tracteur Massey Ferguson MF3080</h3>
-                        <p class="news-card__excerpt">Premier investissement matériel majeur pour la préparation des 100 hectares. Le tracteur sera mutualisé entre les membres selon un planning établi.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--agriculture">Agriculture</span>
-                            <time datetime="2025-11-30">30 Novembre 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Première récolte rizicole</h3>
-                        <p class="news-card__excerpt">Les premiers champs préparés entrent en production. Objectif : 7 tonnes/hectare pour cette première campagne pilote sur 20 hectares.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-card__meta">
-                            <span class="badge badge--fishery">Pisciculture</span>
-                            <time datetime="2025-08-10">10 Août 2025</time>
-                        </div>
-                        <h3 class="news-card__title">Démarrage de la filière TilapiaVert</h3>
-                        <p class="news-card__excerpt">Mise en eau des premiers bacs et introduction des alevins. Formation des membres à la pisciculture intensive en milieu rural.</p>
-                        <a href="#" class="news-card__link">Lire la suite →</a>
-                    </article>
-                </div>
+                <h2 id="presse-title" class="section__title ta-center" style="margin-bottom: 3rem;">Presse & Événements</h2>
                 
-                <div class="news__pagination">
-                    <button class="btn btn--secondary" disabled>← Précédent</button>
-                    <span class="pagination__info">Page 1 sur 1</span>
-                    <button class="btn btn--secondary" disabled>Suivant →</button>
+                <div class="news__grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Article 1 -->
+                    <article class="news-article-card" onclick="openArticle('lancement')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--institutional">Institutionnel</span>
+                            <img src="assets/actu_lancement_v2_1775089761202.webp" alt="Lancement officiel" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">15 Juin 2025</span>
+                            <h3 class="news-article-card__title">Lancement officiel de la coopérative</h3>
+                            <p class="news-article-card__excerpt">Cérémonie officielle de présentation d'Alliance Tounga AgroCoop aux autorités locales et aux partenaires du développement. L'événement marque un tournant dans la région du Bafing.</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="news-article-card" onclick="openArticle('tracteur')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--agriculture">Agriculture</span>
+                            <img src="assets/actu_tracteur_1775089318405.webp" alt="Tracteur acquis" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">20 Juin 2025</span>
+                            <h3 class="news-article-card__title">Acquisition d'un tracteur moderne</h3>
+                            <p class="news-article-card__excerpt">Premier investissement matériel majeur pour la préparation de nos vastes hectares de culture. La mécanisation est encerclée au coeur de notre politique de productivité.</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="news-article-card" onclick="openArticle('recolte')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--agriculture">Agriculture</span>
+                            <img src="assets/actu_recolte_1775089333046.webp" alt="Récolte rizicole" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">30 Novembre 2025</span>
+                            <h3 class="news-article-card__title">Immense moisson rizicole</h3>
+                            <p class="news-article-card__excerpt">Nos champs entrent en production intensive. Un succès salué par tous nos braves coopérateurs. Objectif pulvérisé pour la campagne pilote !</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="news-article-card" onclick="openArticle('tilapia')">
+                        <div class="news-article-card__img-wrapper">
+                            <span class="badge badge--fishery" style="background:#0284c7;color:white;">Pisciculture</span>
+                            <img src="assets/actu_tilapia_1775089347425.webp" alt="Bacs tilapia" loading="lazy">
+                        </div>
+                        <div class="news-article-card__content">
+                            <span class="news-article-card__date">10 Août 2025</span>
+                            <h3 class="news-article-card__title">Démarrage des unités Tilapia</h3>
+                            <p class="news-article-card__excerpt">Mise en eau des tous premiers bacs et solide formation des membres à la pisciculture intensive adaptée à nos milieux ruraux.</p>
+                            <span class="news-article-card__readmore">Lire la suite <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- GROUPE 2 : VIDÉOTHÈQUE -->
+        <section class="videos" aria-labelledby="videos-title" style="background: var(--blanc-creme); padding: 4rem 0;">
+            <div class="container">
+                <h2 id="videos-title" class="section__title ta-center" style="margin-bottom: 3rem;">Vidéothèque & Reportages</h2>
+                
+                <div class="news__grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Vidéo 1 -->
+                    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/GbBFsqf262Q?autoplay=1&start=14')">
+                        <img src="assets/hero-1.webp" alt="Video Placeholder 1" loading="lazy">
+                        <div class="video-card__play">
+                            <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                        <div class="video-card__title">Intervention du Président sur la vision Coopérative 2030</div>
+                    </div>
+
+                    <!-- Vidéo 2 -->
+                    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/g55MxGtG63k?autoplay=1')">
+                        <img src="assets/hero-agri-pisciculture.webp" alt="Video Placeholder 2" loading="lazy">
+                        <div class="video-card__play">
+                            <svg width="24" height="24" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                        <div class="video-card__title">Reportage drone : Immersion dans nos champs de manioc</div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -74,8 +258,118 @@
 
     <!-- INJECT:FOOTER -->
     
-    
+    <!-- MODAL POUR ARTICLE DYNAMIQUE -->
+    <div class="modal-overlay" id="articleModalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Titre par défaut -->
+                <span style="font-weight:700; color:var(--vert-ci);">Article Complet</span>
+                <button class="modal-close" id="closeModalBtn" aria-label="Fermer l'article">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Le contenu de l'article sera injecté ici par JS -->
+            </div>
+        </div>
+    </div>
 
+    <!-- SCRIPT DE GESTION DE LA POP-UP MODALE -->
+    <script>
+        // Fake database des articles
+        const articlesDB = {
+            'lancement': {
+                title: "Lancement officiel de la coopérative",
+                date: "15 Juin 2025",
+                badge: "<span class='badge badge--institutional'>Institutionnel</span>",
+                text: "<p>Cérémonie officielle de présentation d'Alliance Tounga AgroCoop aux autorités locales et aux partenaires du développement. L'événement marque un tournant dans la région du Bafing.</p><p>Devant un parterre d'invités, le président a exposé les objectifs de productivité et de réduction de la pauvreté. L'immatriculation RCCM a été validée, dotant la structure d'un statut juridique solide.</p>",
+                images: ["assets/actu_lancement_v2_1775089761202.webp"]
+            },
+            'tracteur': {
+                title: "Acquisition d'un tracteur moderne",
+                date: "20 Juin 2025",
+                badge: "<span class='badge badge--agriculture'>Agriculture</span>",
+                text: "<p>Premier investissement matériel majeur pour la préparation de nos 100 hectares. Le tracteur de type Massey Ferguson sera mutualisé entre les membres selon un planning strict.</p><p>Cette machine nous permettra de réduire drastiquement la pénibilité du travail de nos membres tout en augmentant la surface cultivable par membre de 400% dès la prochaine saison des pluies.</p>",
+                images: ["assets/actu_tracteur_1775089318405.webp", "assets/tracteur-mf3080.webp"]
+            },
+            'recolte': {
+                title: "Immense moisson rizicole",
+                date: "30 Novembre 2025",
+                badge: "<span class='badge badge--agriculture'>Agriculture</span>",
+                text: "<p>Les premiers champs préparés entrent en production. Ce succès a été salué par l'ensemble des coopérateurs présents aujourd'hui pour cette grande fête champêtre.</p><p>Notre rendement de la première saison approche les 7 tonnes à l'hectare, un record local rendu possible grâce aux semences améliorées et au soutien agronomique rigoureux de l'ANADER.</p>",
+                images: ["assets/actu_recolte_1775089333046.webp", "assets/riz-paddy.webp"]
+            },
+            'tilapia': {
+                title: "Démarrage des unités Tilapia",
+                date: "10 Août 2025",
+                badge: "<span class='badge badge--fishery' style='background:#0284c7;color:white;'>Pisciculture</span>",
+                text: "<p>Mise en eau des premiers bacs circulaires et introduction de plus de 50 000 alevins. Les membres ont bénéficié d'une formation complète en gestion piscicole moderne intensive.</p><p>Ce volet garantit non seulement un approvisionnement en protéines pour nos populations locales de Tounga, mais projette également une forte rentabilité commerciale d'ici 6 mois.</p>",
+                images: ["assets/actu_tilapia_1775089347425.webp", "assets/filiere_pisciculture_aquaterra.webp"]
+            }
+        };
+
+        const modalOverlay = document.getElementById('articleModalOverlay');
+        const modalBody = document.getElementById('modalBody');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        function openArticle(id) {
+            const data = articlesDB[id];
+            if(!data) return;
+
+            // Formater les images en galerie
+            let galleryHTML = '';
+            if(data.images && data.images.length > 0) {
+                galleryHTML = '<div class="modal-article__gallery">';
+                data.images.forEach(imgUrl => {
+                    galleryHTML += '<img src="' + imgUrl + '" alt="Photo de l\'article" loading="lazy">';
+                });
+                galleryHTML += '</div>';
+            }
+
+            // Construire le HTML intérieur
+            const html = `
+                <div class="modal-article__meta">
+                    ${data.badge}
+                    <time>${data.date}</time>
+                </div>
+                <h1 class="modal-article__title">${data.title}</h1>
+                <div class="modal-article__text">
+                    ${data.text}
+                </div>
+                ${galleryHTML}
+            `;
+
+            modalBody.innerHTML = html;
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // bloque le scroll du fond
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            // Couper la vidéo si l'utilisateur ferme la modale
+            setTimeout(() => {
+                modalBody.innerHTML = ''; 
+            }, 400); // attendre fin de l'animation
+        }
+
+        function openVideo(url) {
+            const html = `
+                <div style="position:relative; width:100%; padding-bottom:56.25%;">
+                    <iframe src="${url}" style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:12px;" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            `;
+            modalBody.innerHTML = html;
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function(e) {
+            // Fermer si clic en dehors du contenu
+            if(e.target === modalOverlay) closeModal();
+        });
+    </script>
     <script src="js/main.js" defer></script>
 </body>
 </html>

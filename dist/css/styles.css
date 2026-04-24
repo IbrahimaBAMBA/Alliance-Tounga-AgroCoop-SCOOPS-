@@ -1,4 +1,4 @@
-﻿/* ========================================
+/* ========================================
    ALLIANCE TOUNGA AGROCOOP - STYLES
    Mobile-First, Performance Optimized
    ======================================== */
@@ -77,17 +77,35 @@ button {
 }
 
 /* ========================================
-   NAVIGATION
+   NAVIGATION — Premium Glassmorphism
+   Design System: "Tounga Verdant Glass"
    ======================================== */
+
+/* Entrance animation */
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: white;
-  box-shadow: var(--ombre);
   z-index: 1000;
-  height: 84px;
+  height: 90px;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav--scrolled {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 74px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 150, 57, 0.08);
 }
 
 .nav__container {
@@ -103,22 +121,61 @@ button {
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+  position: relative;
+}
+
+.nav__logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Effet de Halo lumineux dynamique */
+.nav__logo-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(circle, rgba(0, 150, 57, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease, background 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.nav:not(.nav--scrolled) .nav__logo-wrapper::before {
+  opacity: 1;
 }
 
 .nav__logo-img {
-  height: 68px;
+  height: 75px;
   width: auto;
   object-fit: contain;
   display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
-  transition: transform var(--transition), filter var(--transition);
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.08));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+/* Réduction au défilement */
+.nav--scrolled .nav__logo-img {
+  height: 52px;
+}
+
+.nav__logo:hover .nav__logo-wrapper::before {
+  opacity: 1;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
 .nav__logo:hover .nav__logo-img {
-  transform: scale(1.06);
-  filter: drop-shadow(0 3px 8px rgba(255,107,0,0.25));
+  transform: scale(1.04) translateY(-2px);
+  filter: drop-shadow(0 6px 14px rgba(255,107,0,0.25));
 }
 
 /* Burger Menu */
@@ -205,7 +262,7 @@ button {
     opacity: 1;
     visibility: visible;
     flex-direction: row;
-    gap: 2rem;
+    gap: 1.2rem;
     box-shadow: none;
     padding: 0;
     display: flex;
@@ -213,18 +270,34 @@ button {
   
   .nav__link {
     border: none;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.8rem;
     position: relative;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 0.95rem;
   }
   
-  .nav__link:hover::after {
+  .nav__link::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
+    inset: 0;
     background: var(--vert-ci);
+    opacity: 0;
+    transform: scale(0.8);
+    border-radius: 100px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+  }
+  
+  .nav__link:hover {
+    color: var(--vert-ci);
+  }
+  
+  .nav__link:hover::before {
+    opacity: 0.08;
+    transform: scale(1);
   }
 }
 
@@ -252,6 +325,39 @@ button {
   background: #e66000;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255,107,0,0.3);
+}
+
+.btn--premium {
+  background: linear-gradient(135deg, var(--vert-ci), #00b344);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100px;
+  box-shadow: 0 4px 15px rgba(0, 150, 57, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn--premium::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  10% { left: 200%; }
+  100% { left: 200%; }
+}
+
+.btn--premium:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 150, 57, 0.4);
+  color: white;
 }
 
 .btn--secondary {
@@ -539,7 +645,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.6) contrast(1.1);
+  filter: contrast(1.05);
   transform: scale(1.05);
   transition: transform 10s ease-out;
 }
@@ -551,8 +657,7 @@ button {
 .page-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0, 150, 57, 0.6), rgba(255, 107, 0, 0.4));
-  backdrop-filter: blur(2px);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.05) 100%);
 }
 
 .page-hero__content {
@@ -1902,3 +2007,344 @@ button {
 
 
 
+
+
+/* ========================================
+   PARTENARIATS & INVESTISSEMENTS
+   ======================================== */
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.partner-card-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    text-decoration: none;
+    color: inherit;
+    min-height: 140px;
+}
+
+.partner-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 150, 57, 0.1);
+    border-color: rgba(0, 150, 57, 0.2);
+}
+
+.partner-card-link--discussion:hover {
+    box-shadow: 0 12px 25px rgba(255, 140, 0, 0.1);
+    border-color: rgba(255, 140, 0, 0.2);
+}
+
+.partner-card-link__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.partner-logo-item__name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.partner-card-link--discussion .partner-logo-item__name {
+    color: #1a1a1a;
+}
+
+.partner-logo-item__status {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    line-height: 1.4;
+}
+
+/* Grille Investisseurs */
+
+.investment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.investment-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.investment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 150, 57, 0.12);
+}
+
+.investment-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background-color: #f1f5f3;
+    overflow: hidden;
+}
+
+.investment-card__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.investment-card:hover .investment-card__image-wrapper img {
+    transform: scale(1.05);
+}
+
+.investment-card__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    color: var(--vert-ci);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.investment-card__content {
+    padding: 2rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.investment-card__content h3 {
+    color: var(--noir-texte);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.investment-card__content p {
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+
+/* ========================================
+   PAGE HEADER (Espacement Navbar Fixe)
+   ======================================== */
+.page-header {
+    margin-top: 130px; 
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header__title {
+    font-size: 2.5rem;
+    color: var(--vert-ci);
+    margin-bottom: 0.5rem;
+}
+
+.page-header__subtitle {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+}
+
+
+/* ==========================================================================
+   E-COMMERCE & TRUST SIGNALS
+   ========================================================================== */
+
+.trust-bar {
+  background-color: var(--color-green-dark);
+  color: white;
+  padding: 1rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-bottom: 3px solid var(--color-orange);
+}
+.trust-bar__inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+@media (max-width: 768px) {
+  .trust-bar__inner {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.trust-icon {
+  font-size: 1.25rem;
+}
+
+.payment-trust {
+  padding: 4rem 1rem;
+  background-color: var(--color-light);
+  border-top: 1px solid #e2efe6;
+  text-align: center;
+}
+.payment-trust__title {
+  color: var(--color-green-dark);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+.payment-trust__desc {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  color: #555;
+  line-height: 1.6;
+}
+.payment-trust__badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.pay-badge {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  min-width: 130px;
+}
+.pay-badge.wave { background-color: #00c7e5; color: #111; }
+.pay-badge.orange { background-color: #ff6600; color: #fff; }
+.pay-badge.mtn { background-color: #ffcc00; color: #000; }
+.pay-badge.moov { background-color: #005A9C; color: #fff; }
+.pay-badge.djamo { background-color: #1a73e8; color: #fff; }
+.pay-badge.tresor { background-color: #154c3c; color: #fff; }
+
+.footer__socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.footer__socials a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.footer__socials a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  transform: translateX(4px);
+  color: var(--color-orange);
+}
+.footer__legal {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+.footer__legal a {
+  color: white;
+  text-decoration: none;
+}
+.footer__legal a:hover {
+  text-decoration: underline;
+  color: var(--color-orange);
+}
+
+/* ----- PREMIUM SECURE UPDATES ----- */
+.secure-wrapper { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; color: #1a1a1a; font-weight: 700; font-size: 0.95rem; }
+.secure-wrapper svg { width: 22px; height: 22px; fill: #009639; }
+
+.trust-item { gap: 0.75rem; }
+.trust-icon svg { width: 26px; height: 26px; fill: white; opacity: 0.9; }
+
+.pay-badge { cursor: default; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); border-radius: 12px; }
+.pay-badge:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+
+.footer__socials { display: flex; gap: 0.75rem; margin-top: 1rem; }
+.social-btn {
+  width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.1); 
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; text-decoration: none;
+}
+.social-btn svg { width: 20px; height: 20px; fill: white; transition: fill 0.3s ease; }
+.social-btn:hover { background-color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.social-btn:hover svg { fill: var(--color-orange); }
+
+
+/* ==========================================================================
+   MODAL (Pop-up Article / Projet)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+    z-index: 9999; display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-content {
+    background: white; width: 90%; max-width: 800px; max-height: 90vh;
+    border-radius: 20px; display: flex; flex-direction: column;
+    transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2); overflow: hidden;
+}
+.modal-overlay.active .modal-content { transform: translateY(0); }
+.modal-header {
+    padding: 1.5rem 2rem; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex;
+    justify-content: space-between; align-items: center; position: sticky; top: 0;
+    background: white; z-index: 10;
+}
+.modal-close {
+    background: #f1f5f3; border: none; width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s ease; color: #1a1a1a;
+}
+.modal-close:hover { background: #e2ebe6; color: var(--orange-ci); }
+.modal-body { padding: 2rem; overflow-y: auto; scrollbar-width: thin; }
+.modal-body::-webkit-scrollbar { width: 8px; }
+.modal-body::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+.modal-article__meta { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center; font-size: 0.9rem; color: #666; }
+.modal-article__title { font-size: 2rem; color: #1a1a1a; margin-bottom: 1.5rem; line-height: 1.2; }
+.modal-article__text { color: #333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 2rem; }
+.modal-article__text p { margin-bottom: 1rem; }
+.modal-article__gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.modal-article__gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); }
+
+.project-readmore {
+    color: var(--vert-ci); font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: gap 0.3s ease; text-decoration: none; margin-top: 1rem; cursor: pointer;
+}
+.investment-card:hover .project-readmore { gap: 0.8rem; color: var(--orange-ci); }
+.investment-card { cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.investment-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }

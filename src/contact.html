@@ -47,8 +47,8 @@
 
                     <div class="contact-urgent">
                         <h3>Urgence / WhatsApp</h3>
-                        <a href="https://wa.me/225XXXXXXXX" class="btn btn--whatsapp btn--large" target="_blank" rel="noopener">
-                            <span>📱</span> Contacter sur WhatsApp
+                        <a href="#contactForm" class="btn btn--whatsapp btn--large">
+                            <span>📱</span> Remplir le formulaire
                         </a>
                         <p class="contact-urgent__note">Réponse rapide garantie pour les producteurs du Bafing</p>
                     </div>
@@ -100,22 +100,16 @@
                 </section>
             </div>
 
-            <!-- Map placeholder -->
-            <section class="map-section" aria-label="Localisation">
-                <div class="map-placeholder">
-                    <p>🗺️ Carte Google Maps à intégrer ici</p>
-                    <small>Coordonnées GPS : 8.2833° N, 7.6833° W (Touba, Côte d'Ivoire)</small>
-                    <!-- 
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=..." 
-                        width="100%" 
-                        height="400" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                    -->
-                </div>
+            <!-- Map -->
+            <section class="map-section" aria-label="Localisation" style="margin-top: 3rem; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://maps.google.com/maps?q=8.2833,-7.6833&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0; display:block;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
             </section>
         </div>
     </main>
