@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Actualités d'Alliance Tounga AgroCoop : presse, photos et vidéos.">
     <title>Actualités & Médias | Alliance Tounga AgroCoop</title>
-    <link rel="stylesheet" href="css/styles.css?v=1780585808428">
+    <link rel="stylesheet" href="css/styles.css?v=1780591253698">
     <style>
         /* CSS spécifique à la grille actualités premium */
         .news-article-card {
@@ -186,40 +186,6 @@
             </div>
         </div>
     </nav>
-
-    <script>
-    (function() {
-        // Active link detection
-        var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.nav__link').forEach(function(link) {
-            var href = link.getAttribute('href');
-            if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-                link.classList.add('nav__link--active');
-            }
-        });
-
-        // Burger menu toggle
-        var burger = document.getElementById('burgerBtn');
-        var menu = document.getElementById('menu');
-        if (burger && menu) {
-            burger.addEventListener('click', function() {
-                var isOpen = menu.classList.toggle('active');
-                burger.setAttribute('aria-expanded', isOpen);
-                burger.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-            });
-        }
-
-        // Scroll: add scrolled class to nav
-        var nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 20) {
-                nav.classList.add('nav--scrolled');
-            } else {
-                nav.classList.remove('nav--scrolled');
-            }
-        }, { passive: true });
-    })();
-    </script>
 
 
     <main class="main">
@@ -508,6 +474,6 @@
             if(e.target === modalOverlay) closeModal();
         });
     </script>
-    <script src="js/main.js?v=1780585808428" defer></script>
+    <script src="js/main.js?v=1780591253698" defer></script>
 </body>
 </html>

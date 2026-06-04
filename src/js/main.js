@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
+  initNavbarScroll();
   initActiveLinks();
   initLazyLoading();
   initFormValidation();
@@ -30,16 +31,18 @@ function initActiveLinks() {
 // Navigation Mobile (Burger Menu)
 // ========================================
 function initNavigation() {
-  const burger = document.querySelector('.nav__burger');
+  const burger = document.getElementById('burgerBtn') || document.querySelector('.nav__burger');
   const menu = document.getElementById('menu');
   
   if (!burger || !menu) return;
   
   burger.addEventListener('click', () => {
     const isExpanded = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', !isExpanded);
+    const nextState = !isExpanded;
+    burger.setAttribute('aria-expanded', nextState);
+    burger.setAttribute('aria-label', nextState ? 'Fermer le menu' : 'Ouvrir le menu');
     menu.classList.toggle('active');
-    document.body.style.overflow = isExpanded ? '' : 'hidden';
+    document.body.style.overflow = nextState ? 'hidden' : '';
   });
   
   // Fermer menu au clic sur un lien (mobile)
@@ -47,6 +50,7 @@ function initNavigation() {
     link.addEventListener('click', () => {
       if (window.innerWidth < 768) {
         burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Ouvrir le menu');
         menu.classList.remove('active');
         document.body.style.overflow = '';
       }
@@ -57,10 +61,27 @@ function initNavigation() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.classList.contains('active')) {
       burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Ouvrir le menu');
       menu.classList.remove('active');
       document.body.style.overflow = '';
     }
   });
+}
+
+// ========================================
+// Effet au défilement (Navbar Styling)
+// ========================================
+function initNavbarScroll() {
+  const nav = document.getElementById('mainNav');
+  if (!nav) return;
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      nav.classList.add('nav--scrolled');
+    } else {
+      nav.classList.remove('nav--scrolled');
+    }
+  }, { passive: true });
 }
 
 // ========================================
