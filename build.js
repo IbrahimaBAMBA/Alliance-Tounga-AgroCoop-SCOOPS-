@@ -1,6 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const sharp = require('sharp');
+let sharp;
+try {
+    sharp = require('sharp');
+} catch (err) {
+    console.warn('Warning: sharp module could not be loaded. Image conversion to WebP will be skipped, but assets will be copied directly.');
+}
 
 const SRC_DIR = path.join(__dirname, 'src');
 const DIST_DIR = path.join(__dirname, 'dist');
@@ -60,11 +65,24 @@ if (fs.existsSync(assetDir)) {
         
         if (['.jpg', '.jpeg', '.png'].includes(ext)) {
             const outputPath = path.join(DIST_DIR, 'assets', `${base}.webp`);
-            sharp(inputPath)
-                .webp({ quality: 80 })
-                .toFile(outputPath)
-                .then(() => console.log(`Converted to WebP: ${img}`))
-                .catch(err => console.error(`Error converting ${img}:`, err));
+            if (sharp) {
+                sharp(inputPath)
+                    .webp({ quality: 80 })
+                    .toFile(outputPath)
+                    .then(() => console.log(`Converted to WebP: ${img}`))
+                    .catch(err => console.error(`Error converting ${img}:`, err));
+            } else {
+                // If sharp is not available, check if the webp already exists or copy the file
+                const fallbackPath = path.join(DIST_DIR, 'assets', img);
+                fs.copyFileSync(inputPath, fallbackPath);
+                
+                // Also check if a webp copy exists, if not, copy original
+                const webpPath = path.join(DIST_DIR, 'assets', `${base}.webp`);
+                if (!fs.existsSync(webpPath)) {
+                    fs.copyFileSync(inputPath, webpPath);
+                }
+                console.log(`Copied image (sharp unavailable): ${img}`);
+            }
         } else {
             // just copy other files (like SVG, WEBP if it exists)
             fs.copyFileSync(inputPath, path.join(DIST_DIR, 'assets', img));
